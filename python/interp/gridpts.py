@@ -14,3 +14,15 @@ def cheb(n):
         x = np.linspace(0, np.pi, n)
         return np.cos(x)
         
+def evalprod(x, xx):
+	"""\
+	evalprod(x, xx):
+	returns yy
+	yy[i] = prod(xx[i] - x[j]) over j  
+	"""
+	yy = np.empty(xx.shape)
+	for i in range(len(xx)):
+		dx = xx[i] - x
+		yy[i] = np.prod(dx)
+	
+	return yy

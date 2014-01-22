@@ -1,6 +1,5 @@
 import numpy as np
 import lgrng
-from matplotlib import pyplot as plt
 
 def evalnfit(f, x, xx):
 	"""\
@@ -27,6 +26,7 @@ def plot(f, x, xx):
 	xx = interpolation points
 	plots interpolant and returns maximum error
 	"""
+	from matplotlib import pyplot as plt
 	y, yy = evalnfit(f, x, xx)
 	plt.plot(x, y, 'ro')
 	plt.plot(xx, yy, 'k')
