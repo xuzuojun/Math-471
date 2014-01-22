@@ -30,6 +30,13 @@ def plot(f, x, xx):
 	y, yy = evalnfit(f, x, xx)
 	plt.plot(x, y, 'ro')
 	plt.plot(xx, yy, 'k')
+	
+	zz = np.zeros(xx.shape)
+	for i,xp in enumerate(xx):
+		zz[i] = f(xp)
+		
+	plt.plot(xx, zz, 'b')
+
 	plt.axis('tight')
 	plt.xlabel('x')
 	plt.ylabel('y')

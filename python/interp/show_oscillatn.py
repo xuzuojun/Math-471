@@ -3,6 +3,7 @@ import numpy as np
 from matplotlib import pyplot as plt
 
 def plot_unifcheb(n):
+	assert n%2 == 0
         x = gr.unif(n)
         xx = np.linspace(-1,1,200)*0.99+1e-6
         yy = gr.evalprod(x, xx)
@@ -26,4 +27,4 @@ def plot_unifcheb(n):
         plt.show()
 
 
-plot_unifcheb(10)
+plot_unifcheb(30)
