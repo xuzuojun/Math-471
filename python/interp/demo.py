@@ -41,9 +41,6 @@ def plot(f, x, xx):
 	plt.xlabel('x')
 	plt.ylabel('y')
 
-	zz = np.empty(yy.shape)
-	for i,g in enumerate(xx):
-		zz[i] = f(xx[i])
 	error = np.abs(zz - yy)
 	error = np.max(error)
 		
