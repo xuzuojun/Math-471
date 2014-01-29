@@ -18,7 +18,7 @@ def evalnfit(f, x, xx):
 	yy = lgrng.interp(x, y, xx)
 	return y, yy
 
-def plot(f, x, xx):
+def demo(f, x, xx):
 	"""\
 	plot(f, x, xx):
 	f = function to be interpolated
@@ -47,4 +47,38 @@ def plot(f, x, xx):
 	ax = plt.gca()
 	plt.text(0.4, 0.2, 'Error = '+str(error), transform=ax.transAxes)
 	plt.axis([np.min(x), np.max(x), np.min(y), np.max(y)])
-	plt.show()
+
+
+def unifvscheb(n):
+	"""\
+	unifvscheb(n):
+	graphs the function (x-x0)...(x-x_{n-1}) for unif and cheb
+	point in [0,1].
+	n must be even.
+	functions nmlzed to be 1 at 0.
+	"""
+	import gridpts as gr
+	import numpy as np
+	from matplotlib import pyplot as plt
+	
+	assert n%2 == 0
+        x = gr.unif(n)
+        xx = np.linspace(-1,1,200)*0.99+1e-6
+        yy = gr.evalprod(x, xx)
+        
+        zero = np.array([0]) #nmlz
+        yy = yy/gr.evalprod(x, zero)
+
+        plt.subplot(211) 
+        plt.plot(xx, yy)
+        plt.title('nmlz prod poly with ' + str(n) + ' unif points')
+        
+        x = gr.cheb(n)
+        yy = gr.evalprod(x, xx)
+        
+        yy = yy/gr.evalprod(x, zero) #nmlz
+
+        
+        plt.subplot(212) 
+        plt.plot(xx, yy)
+        plt.title('nmlz prod poly with ' + str(n) + ' cheb points')

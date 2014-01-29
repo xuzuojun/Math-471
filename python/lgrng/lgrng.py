@@ -31,7 +31,7 @@ def interp(x, y, xx, w = -1):
 	    and isinstance(xx, np.ndarray)
 	assert x.ndim == y.ndim == xx.ndim == 1
 
-	if w == -1:
+	if isinstance(w, int) and w == -1:
 		w = weights(x)
 
 	yy = np.empty(xx.shape)
